@@ -1,9 +1,8 @@
 {
-  "name": "alterna-web",
+  "name": "@institute-alterna/www-studio",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1-beta",
   "main": "package.json",
-  "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
@@ -11,9 +10,18 @@
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/institute-alterna/www-studio.git"
+  },
   "keywords": [
     "sanity"
   ],
+  "author": "Institute Alterna",
+  "license": "MIT",
   "dependencies": {
     "@sanity/vision": "^5.6.0",
     "react": "^19.1",

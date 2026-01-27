@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Alterna Web',
 
-  projectId: 'js1kdovc',
-  dataset: 'production',
+  projectId: process.env.SANITY_PROJECT_ID || '',
+  dataset: process.env.SANITY_DATASET || 'production',
 
   plugins: [structureTool(), visionTool()],
 

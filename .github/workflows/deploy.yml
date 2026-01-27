@@ -1,0 +1,76 @@
+name: Checks and Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build on Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x, latest]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build Studio
+        run: npm run build
+        env:
+            SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
+            SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+            SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+
+      - name: Check build artifacts
+        run: |
+          test -d dist || exit 1
+          test -f dist/index.html || exit 1
+          echo "Build artifacts verified successfully"
+      
+
+  deploy:
+    needs: build
+    name: Deploy Studio
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Deploy to Sanity
+        run: npm run deploy
+        env:
+            SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
+            SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+            SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+      
+      - name: Check build artifacts
+        run: |
+          test -d dist || exit 1
+          test -f dist/index.html || exit 1
+          echo "Build artifacts verified successfully"
