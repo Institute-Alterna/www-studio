@@ -13,6 +13,17 @@ export const role = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: 'URL-friendly identifier for this role',
+      options: {
+        source: "name",
+        maxLength: 96,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
@@ -79,41 +90,28 @@ export const role = defineType({
       name: 'responsibilities',
       title: 'Responsibilities',
       type: 'array',
-      description: 'Key responsibilities and duties for this role',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [{ title: 'Bullet', value: 'bullet' }],
-          marks: {
-            decorators: [
-              { title: 'Bold', value: 'strong' },
-              { title: 'Italic', value: 'em' },
-            ],
-            annotations: [],
-          },
-        }),
-      ],
+      description: 'Key responsibilities and duties for this role. Shown as bullet points ("In this role you\'ll:")',
+      of: [{ type: 'string' }],
     }),
     defineField({
       name: 'requirements',
       title: 'Requirements',
       type: 'array',
-      description: 'Minimum qualifications and skills needed',
+      description: 'Minimum qualifications and skills needed. Shown as bullet points.',
       of: [{ type: 'string' }],
     }),
     defineField({
       name: 'exceptionalPoints',
       title: 'Exceptional Points',
       type: 'array',
-      description: 'Nice-to-have qualifications that set candidates apart',
+      description: 'Nice-to-have qualifications that set candidates apart. Shown as bullet points.',
       of: [{ type: 'string' }],
     }),
     defineField({
       name: 'whatYouWillLearn',
       title: 'What You Will Learn',
       type: 'array',
-      description: 'Skills and knowledge gained in this role',
+      description: 'Skills and knowledge gained in this role. Shown as bullet points ("In this role you\'ll learn:")',
       of: [{ type: 'string' }],
     }),
     defineField({
@@ -256,7 +254,7 @@ export const role = defineType({
             Rule.custom((amount, context) => {
               const parent = context.parent as { salary?: boolean }
               if (parent?.salary && !amount) return 'Amount is required when salary is enabled'
-              if (amount !== undefined && amount <= 0) return 'Amount must be positive'
+              if (parent?.salary && amount !== undefined && amount < 0) return 'Amount must be positive'
               return true
             }),
         }),
