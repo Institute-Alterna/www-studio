@@ -23,7 +23,7 @@
   "author": "Institute Alterna",
   "license": "MIT",
   "dependencies": {
-    "@sanity/vision": "^5.16.0",
+    "@sanity/vision": "^5.18.0",
     "react": "^19.1",
     "react-dom": "^19.1",
     "sanity": "^5.16.0",
@@ -37,7 +37,8 @@
     "typescript": "^5.8"
   },
   "overrides": {
-    "minimatch": ">=10.2.3"
+    "minimatch": ">=10.2.3",
+    "js-yaml": ">=4.1.1"
   },
   "prettier": {
     "semi": false,
