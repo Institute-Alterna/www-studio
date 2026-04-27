@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity'
+import {defineType, defineField} from 'sanity'
 
 export const strategist = defineType({
   name: 'strategist',
@@ -18,10 +18,10 @@ export const strategist = defineType({
       description: 'Role identifier (e.g., "principal", "academic", "community", "competition")',
       options: {
         list: [
-          { title: 'Principal Strategist', value: 'principal' },
-          { title: 'Academic Strategist', value: 'academic' },
-          { title: 'Community Strategist', value: 'community' },
-          { title: 'Competition Strategist', value: 'competition' },
+          {title: 'Principal Strategist', value: 'principal'},
+          {title: 'Academic Strategist', value: 'academic'},
+          {title: 'Community Strategist', value: 'community'},
+          {title: 'Competition Strategist', value: 'competition'},
         ],
       },
       validation: (Rule) => Rule.required(),

@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from 'sanity'
+import {defineType, defineField, defineArrayMember} from 'sanity'
 
 export const role = defineType({
   name: 'role',
@@ -13,12 +13,12 @@ export const role = defineType({
       initialValue: false,
     }),
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
       description: 'URL-friendly identifier for this role',
       options: {
-        source: "name",
+        source: 'name',
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
@@ -37,9 +37,9 @@ export const role = defineType({
       description: 'Which team this role belongs to',
       options: {
         list: [
-          { title: 'Operations', value: 'operations' },
-          { title: 'Safety', value: 'safety' },
-          { title: 'MUN', value: 'mun' },
+          {title: 'Operations', value: 'operations'},
+          {title: 'Safety', value: 'safety'},
+          {title: 'MUN', value: 'mun'},
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -51,9 +51,9 @@ export const role = defineType({
       description: 'Where this role is performed',
       options: {
         list: [
-          { title: 'Remote', value: 'remote' },
-          { title: 'Hybrid', value: 'hybrid' },
-          { title: 'On-Site', value: 'on-site' },
+          {title: 'Remote', value: 'remote'},
+          {title: 'Hybrid', value: 'hybrid'},
+          {title: 'On-Site', value: 'on-site'},
         ],
         layout: 'radio',
       },
@@ -74,12 +74,12 @@ export const role = defineType({
       of: [
         defineArrayMember({
           type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
+          styles: [{title: 'Normal', value: 'normal'}],
           lists: [],
           marks: {
             decorators: [
-              { title: 'Bold', value: 'strong' },
-              { title: 'Italic', value: 'em' },
+              {title: 'Bold', value: 'strong'},
+              {title: 'Italic', value: 'em'},
             ],
             annotations: [],
           },
@@ -90,29 +90,31 @@ export const role = defineType({
       name: 'responsibilities',
       title: 'Responsibilities',
       type: 'array',
-      description: 'Key responsibilities and duties for this role. Shown as bullet points ("In this role you\'ll:")',
-      of: [{ type: 'string' }],
+      description:
+        'Key responsibilities and duties for this role. Shown as bullet points ("In this role you\'ll:")',
+      of: [{type: 'string'}],
     }),
     defineField({
       name: 'requirements',
       title: 'Requirements',
       type: 'array',
       description: 'Minimum qualifications and skills needed. Shown as bullet points.',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
     }),
     defineField({
       name: 'exceptionalPoints',
       title: 'Exceptional Points',
       type: 'array',
       description: 'Nice-to-have qualifications that set candidates apart. Shown as bullet points.',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
     }),
     defineField({
       name: 'whatYouWillLearn',
       title: 'What You Will Learn',
       type: 'array',
-      description: 'Skills and knowledge gained in this role. Shown as bullet points ("In this role you\'ll learn:")',
-      of: [{ type: 'string' }],
+      description:
+        'Skills and knowledge gained in this role. Shown as bullet points ("In this role you\'ll learn:")',
+      of: [{type: 'string'}],
     }),
     defineField({
       name: 'workload',
@@ -139,7 +141,7 @@ export const role = defineType({
           title: 'Working Hours',
           type: 'string',
           description: 'Format: HH:MM - HH:MM (24h)',
-          hidden: ({ parent }) => parent?.asynchronous === true,
+          hidden: ({parent}) => parent?.asynchronous === true,
           validation: (Rule) =>
             Rule.regex(/^\d{2}:\d{2}\s*-\s*\d{2}:\d{2}$/, {
               name: '24h time range',
@@ -151,18 +153,18 @@ export const role = defineType({
           title: 'Timezone',
           type: 'string',
           description: 'Primary timezone for synchronous work',
-          hidden: ({ parent }) => parent?.asynchronous === true,
+          hidden: ({parent}) => parent?.asynchronous === true,
           options: {
             list: [
-              { title: 'UTC', value: 'UTC' },
-              { title: 'EST (UTC-5)', value: 'EST' },
-              { title: 'CST (UTC-6)', value: 'CST' },
-              { title: 'PST (UTC-8)', value: 'PST' },
-              { title: 'GMT (UTC+0)', value: 'GMT' },
-              { title: 'CET (UTC+1)', value: 'CET' },
-              { title: 'IST (UTC+5:30)', value: 'IST' },
-              { title: 'JST (UTC+9)', value: 'JST' },
-              { title: 'AEST (UTC+10)', value: 'AEST' },
+              {title: 'UTC', value: 'UTC'},
+              {title: 'EST (UTC-5)', value: 'EST'},
+              {title: 'CST (UTC-6)', value: 'CST'},
+              {title: 'PST (UTC-8)', value: 'PST'},
+              {title: 'GMT (UTC+0)', value: 'GMT'},
+              {title: 'CET (UTC+1)', value: 'CET'},
+              {title: 'IST (UTC+5:30)', value: 'IST'},
+              {title: 'JST (UTC+9)', value: 'JST'},
+              {title: 'AEST (UTC+10)', value: 'AEST'},
             ],
           },
         }),
@@ -185,11 +187,11 @@ export const role = defineType({
           title: 'Collaboration Frequency',
           type: 'string',
           description: 'How often live collaboration sessions occur',
-          hidden: ({ parent }) => !parent?.liveCollaboration,
+          hidden: ({parent}) => !parent?.liveCollaboration,
           options: {
             list: [
-              { title: 'from time to time', value: 'daily' },
-              { title: 'bi-weekly', value: 'bi-weekly' },
+              {title: 'from time to time', value: 'daily'},
+              {title: 'bi-weekly', value: 'bi-weekly'},
             ],
           },
         }),
@@ -212,20 +214,18 @@ export const role = defineType({
           name: 'expectedStartDate',
           title: 'Expected Start Date',
           type: 'date',
-          hidden: ({ parent }) => parent?.ongoing === true,
+          hidden: ({parent}) => parent?.ongoing === true,
         }),
         defineField({
           name: 'expectedEndDate',
           title: 'Expected End Date',
           type: 'date',
-          hidden: ({ parent }) => parent?.ongoing === true,
+          hidden: ({parent}) => parent?.ongoing === true,
           validation: (Rule) =>
             Rule.custom((endDate, context) => {
-              const parent = context.parent as { expectedStartDate?: string }
+              const parent = context.parent as {expectedStartDate?: string}
               if (!endDate || !parent?.expectedStartDate) return true
-              return endDate > parent.expectedStartDate
-                ? true
-                : 'End date must be after start date'
+              return endDate > parent.expectedStartDate ? true : 'End date must be after start date'
             }),
         }),
       ],
@@ -249,12 +249,13 @@ export const role = defineType({
           type: 'number',
           description: 'Salary amount in USD',
           initialValue: 0,
-          hidden: ({ parent }) => !parent?.salary,
+          hidden: ({parent}) => !parent?.salary,
           validation: (Rule) =>
             Rule.custom((amount, context) => {
-              const parent = context.parent as { salary?: boolean }
+              const parent = context.parent as {salary?: boolean}
               if (parent?.salary && !amount) return 'Amount is required when salary is enabled'
-              if (parent?.salary && amount !== undefined && amount < 0) return 'Amount must be positive'
+              if (parent?.salary && amount !== undefined && amount < 0)
+                return 'Amount must be positive'
               return true
             }),
         }),
@@ -263,7 +264,7 @@ export const role = defineType({
           title: 'Benefits',
           type: 'array',
           description: 'Non-monetary perks and benefits offered',
-          of: [{ type: 'string' }],
+          of: [{type: 'string'}],
         }),
       ],
     }),
@@ -282,7 +283,7 @@ export const role = defineType({
       active: 'active',
       workMode: 'workMode',
     },
-    prepare({ title, active, workMode }) {
+    prepare({title, active, workMode}) {
       return {
         title: `${active ? '🟢' : '⚫'} ${title || 'Untitled Role'}`,
         subtitle: workMode,

@@ -7,6 +7,9 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
@@ -23,10 +26,10 @@
   "author": "Institute Alterna",
   "license": "MIT",
   "dependencies": {
-    "@sanity/vision": "^5.21.0",
+    "@sanity/vision": "^5.22.0",
     "react": "^19.1",
     "react-dom": "^19.1",
-    "sanity": "^5.21.0",
+    "sanity": "^5.22.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {

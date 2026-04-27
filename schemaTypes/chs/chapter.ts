@@ -1,11 +1,10 @@
-import { defineType, defineField } from 'sanity'
+import {defineType, defineField} from 'sanity'
 
 export const chapter = defineType({
   name: 'chapter',
   title: 'Chapter',
   type: 'document',
   fields: [
-    // Existing fields
     defineField({
       name: 'societyId',
       title: 'Society ID',
@@ -56,7 +55,6 @@ export const chapter = defineType({
       description: 'Optional Tally form ID for chapter contact form',
     }),
 
-    // Stats object
     defineField({
       name: 'stats',
       title: 'Statistics',
@@ -83,7 +81,6 @@ export const chapter = defineType({
       ],
     }),
 
-    // Strategists reference array
     defineField({
       name: 'strategists',
       title: 'Strategists',
@@ -91,17 +88,16 @@ export const chapter = defineType({
       of: [
         {
           type: 'reference',
-          to: [{ type: 'strategist' }],
+          to: [{type: 'strategist'}],
         },
       ],
     }),
 
-    // Achievements
     defineField({
       name: 'achievements',
       title: 'Achievements',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
       description: 'List of chapter accomplishments',
     }),
 
@@ -192,7 +188,7 @@ export const chapter = defineType({
       subtitle: 'location',
       isFlagship: 'isFlagship',
     },
-    prepare({ title, subtitle, isFlagship }) {
+    prepare({title, subtitle, isFlagship}) {
       return {
         title: isFlagship ? `${title} ⭐` : title,
         subtitle,

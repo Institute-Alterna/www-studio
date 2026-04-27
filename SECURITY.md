@@ -1,10 +1,11 @@
 # Security Policy
 
-If you discover a security vulnerability in any Alterna system, **please report it responsibly by emailing *safety [at] alterna.dev* with the subject line “Security Vulnerability Report”, followed by a descriptive title of the issue**. If you are able to, we strongly suggest that you encrypt your report using our [PGP key](https://keys.openpgp.org/search?q=C2DCE1413EE82E234FBC14A15AD8DE1D94EBF08A).
+If you discover a security vulnerability in any Alterna system, **please report it responsibly by emailing _safety [at] alterna.dev_ with the subject line “Security Vulnerability Report”, followed by a descriptive title of the issue**. If you are able to, we strongly suggest that you encrypt your report using our [PGP key](https://keys.openpgp.org/search?q=C2DCE1413EE82E234FBC14A15AD8DE1D94EBF08A).
 
 We kindly ask you to not disclose this vulnerability to outside parties nor abuse it maliciously until we have resolved the issue or otherwise notified you.
 
 ## What to Include
+
 Please include the following in your report:
 
 - A precise description of the vulnerability and its potential impact
@@ -13,6 +14,7 @@ Please include the following in your report:
 - Your real name (or pseudonym) and contact information (optional, but appreciated)
 
 ## What we'll do
+
 When you report a vulnerability to us, we commit to:
 
 - Acknowledging receipt of your report within 48 hours
@@ -21,6 +23,7 @@ When you report a vulnerability to us, we commit to:
 - Not pursuing legal action against researchers who act in good faith and follow this disclosure policy
 
 ## Scope
+
 This policy applies to all systems operated by Institute Alterna, including:
 
 - [alterna.dev](https://alterna.dev) and all subdomains
@@ -28,6 +31,7 @@ This policy applies to all systems operated by Institute Alterna, including:
 - Any web applications or APIs we operate
 
 ## Out of Scope
+
 The following are considered out of scope and won't be recognised:
 
 - Denial of service attacks
