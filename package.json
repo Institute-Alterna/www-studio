@@ -27,10 +27,10 @@
   "author": "Institute Alterna",
   "license": "MIT",
   "dependencies": {
-    "@sanity/vision": "^5.25.1",
+    "@sanity/vision": "^5.26.0",
     "react": "^19.1",
     "react-dom": "^19.1",
-    "sanity": "^5.25.1",
+    "sanity": "^5.26.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
