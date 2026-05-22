@@ -52,6 +52,28 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+  test:
+    name: Schema Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
   build:
     name: Build on Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest

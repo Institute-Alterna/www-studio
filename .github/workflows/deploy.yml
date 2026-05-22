@@ -63,8 +63,30 @@ jobs:
           test -f dist/index.html || exit 1
           echo "Build artifacts verified successfully"
 
+  test:
+    name: Schema Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
   deploy:
-    needs: [typecheck, build]
+    needs: [typecheck, build, test]
     name: Deploy Studio
     runs-on: ubuntu-latest
     permissions:
